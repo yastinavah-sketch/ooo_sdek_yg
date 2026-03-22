@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ООО СДЭК ЮГ под управлением Елены Чернявской — Команда №1 по Югу России</title>
+    
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Подключение иконок Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Подключение JS Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cdek: {
+                            orange: '#EF780E',
+                            green: '#00A164',
+                            gray: '#E1E1E0',
+                            purple: '#584D98',
+                            dark: '#111111',
+                            black: '#000000',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"TT Runs Trial Variable Roman"', 'Manrope', 'sans-serif'],
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: "TT Runs Trial Variable Roman", "Manrope", sans-serif;
+            color: #000000;
+            background-color: #FFFFFF;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        .bg-pattern {
+            background-image: radial-gradient(#E1E1E0 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tilt-card {
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ya-form-container {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        
+        .ya-form-container iframe {
+            width: 100% !important;
+            min-height: 600px;
+            border: none;
+        }
+
+        .marquee-container {
+            display: flex;
+            width: max-content;
+        }
+
+        /* Магнитный эффект для кнопок */
+        .magnetic-btn {
+            display: inline-flex;
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
+        }
+
+        @media (max-width: 768px) {
+            .tilt-card {
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Навигация -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-3 md:py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2">
+                    <img src="https://www.cdek.ru/v2/img/logo.f195d73.svg" alt="СДЭК" class="h-5 md:h-7 w-auto" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/d/d7/Cdek_logo.svg'">
+                    <div class="h-6 w-px bg-gray-200 mx-1"></div>
+                    <div class="text-cdek-black leading-none">
+                        <p class="font-bold text-[10px] md:text-sm uppercase tracking-tight">ООО СДЭК ЮГ</p>
+                        <p class="text-[8px] md:text-[10px] text-gray-400 font-medium">под упр. Елены Чернявской</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#cta" class="magnetic-btn bg-cdek-orange text-white px-4 py-2 md:px-6 md:py-2.5 rounded-xl font-bold text-xs md:text-sm shadow-lg shadow-cdek-orange/20">
+                Откликнуться
+            </a>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="relative pt-24 pb-12 md:pt-48 md:pb-32 px-4 md:px-8 bg-pattern">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 md:gap-12 items-center relative z-10">
+            <div class="scroll-reveal visible text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-cdek-green/10 text-cdek-green font-bold text-xs md:text-sm mb-6 border border-cdek-green/20">
+                    <i data-lucide="award" class="w-4 h-4"></i>
+                    <span>Топ-7 лучших франшиз РФ</span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 text-cdek-black tracking-tight text-balance">
+                    Команда №1 <br>
+                    <span class="text-cdek-green relative inline-block">
+                        в СДЭК ЮГ
+                        <svg class="absolute -bottom-1 md:-bottom-2 left-0 w-full h-1 md:h-2 text-cdek-orange/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <path d="M0 5 Q 25 0 50 5 T 100 5" fill="none" stroke="currentColor" stroke-width="4" />
+                        </svg>
+                    </span>
+                </h1>
+                <p class="text-base md:text-xl text-gray-600 font-medium mb-8 md:mb-10 max-w-lg leading-relaxed text-left">
+                    Мы объединяем энергию южного темперамента с международными стандартами логистики. Место, где твой потенциал превращается в результат.
+                </p>
+                <div class="flex flex-col lg:flex-row gap-4 items-center lg:items-start">
+                    <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                        <button onclick="triggerConfetti()" class="magnetic-btn inline-flex justify-center items-center bg-cdek-orange text-white px-8 py-4 md:px-10 md:py-5 rounded-2xl font-bold text-base md:text-lg shadow-xl shadow-cdek-orange/30 w-full sm:w-auto">
+                            Заполнить анкету
+                        </button>
+                        <a href="#vacancies" class="magnetic-btn inline-flex justify-center items-center bg-cdek-green text-white px-8 py-4 md:px-8 md:py-5 rounded-2xl font-bold text-base md:text-lg shadow-xl shadow-cdek-green/30 hover:opacity-90 transition-opacity w-full sm:w-auto">
+                            Смотреть вакансии
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-3 px-2 mt-4 lg:mt-2">
+                        <div class="flex -space-x-2 md:-space-x-3">
+                            <div class="w-9 h-9 md:w-11 md:h-11 rounded-full border-2 border-white bg-cdek-green flex items-center justify-center text-[8px] md:text-[10px] text-white font-bold shadow-md z-30">HR</div>
+                            <div class="w-9 h-9 md:w-11 md:h-11 rounded-full border-2 border-white bg-cdek-purple flex items-center justify-center text-[8px] md:text-[10px] text-white font-bold shadow-md z-20">CEO</div>
+                            <div class="w-9 h-9 md:w-11 md:h-11 rounded-full border-2 border-white bg-cdek-orange flex items-center justify-center text-[8px] md:text-[10px] text-white font-bold shadow-md z-10">WIN</div>
+                        </div>
+                        <span class="text-xs md:text-sm font-bold text-gray-500 ml-1">100+ экспертов</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative hidden lg:block scroll-reveal visible delay-200">
+                <div class="absolute -inset-4 bg-cdek-green rounded-[3rem] rotate-3 opacity-10"></div>
+                <div class="bg-cdek-green rounded-[3rem] p-12 text-white relative shadow-2xl overflow-hidden aspect-[4/5] flex flex-col justify-end tilt-card text-left">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+                    <div class="relative z-10" style="transform: translateZ(50px);">
+                        <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-xl flex items-center justify-center mb-8">
+                            <i data-lucide="rocket" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <h3 class="text-4xl font-bold mb-4 leading-tight">Доставляем будущее сегодня</h3>
+                        <p class="text-xl font-medium opacity-80">Стань частью легендарной команды Юга.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Бегущая строка -->
+    <div class="w-full bg-cdek-green text-white py-3 md:py-4 overflow-hidden flex whitespace-nowrap border-y border-white/20 relative rotate-[-1deg] scale-105 z-20 shadow-xl">
+        <div class="marquee-container animate-marquee flex items-center">
+            <div class="flex gap-8 md:gap-12 items-center text-sm md:text-base font-bold uppercase tracking-widest px-4">
+                <span>⚡ Доход без потолка</span> <span>•</span>
+                <span>🚀 Быстрый трек</span> <span>•</span>
+                <span>🔥 Яркая культура</span> <span>•</span>
+                <span>💼 Работа в кайф</span> <span>•</span>
+            </div>
+            <div class="flex gap-8 md:gap-12 items-center text-sm md:text-base font-bold uppercase tracking-widest px-4">
+                <span>⚡ Доход без потолка</span> <span>•</span>
+                <span>🚀 Быстрый трек</span> <span>•</span>
+                <span>🔥 Яркая культура</span> <span>•</span>
+                <span>💼 Работа в кайф</span> <span>•</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Статистика -->
+    <section class="py-12 md:py-20 bg-white px-4 md:px-8">
+        <div class="max-w-7xl mx-auto" id="stats-section">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
+                <div class="text-center md:text-left scroll-reveal">
+                    <div class="text-3xl md:text-6xl font-bold text-cdek-green mb-1"><span class="counter" data-target="9">0</span> лет</div>
+                    <div class="text-gray-400 font-bold text-[10px] md:text-sm uppercase tracking-widest">на рынке</div>
+                </div>
+                <div class="text-center md:text-left scroll-reveal delay-100">
+                    <div class="text-3xl md:text-6xl font-bold text-cdek-orange mb-1"><span class="counter" data-target="100">0</span>+</div>
+                    <div class="text-gray-400 font-bold text-[10px] md:text-sm uppercase tracking-widest">экспертов</div>
+                </div>
+                <div class="text-center md:text-left scroll-reveal">
+                    <div class="text-3xl md:text-6xl font-bold text-cdek-purple mb-1">№1</div>
+                    <div class="text-gray-400 font-bold text-[10px] md:text-sm uppercase tracking-widest">в ЮФО</div>
+                </div>
+                <div class="text-center md:text-left scroll-reveal delay-300">
+                    <div class="text-3xl md:text-6xl font-bold text-cdek-black mb-1"><span class="counter" data-target="7">0</span> место</div>
+                    <div class="text-gray-400 font-bold text-[10px] md:text-sm uppercase tracking-widest text-balance leading-snug text-left">среди 2800+<br>подразделений СДЭК в России</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Почему у нас хотят работать -->
+    <section class="py-16 md:py-24 px-4 md:px-8 bg-cdek-dark text-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto relative z-10 text-left">
+            <h2 class="text-3xl md:text-6xl font-bold mb-10 md:mb-16 scroll-reveal leading-tight text-left">
+                Почему у нас <br> <span class="text-cdek-green italic text-left">хотят работать?</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 01 Доход -->
+                <div class="md:col-span-2 group scroll-reveal delay-100 tilt-card">
+                    <div class="glass-card rounded-[2.5rem] p-8 md:p-10 h-full relative overflow-hidden transition-all duration-500 hover:border-cdek-green/40">
+                        <div class="flex justify-between items-start mb-16 md:mb-20">
+                            <span class="text-5xl md:text-7xl font-bold opacity-10">01</span>
+                            <div class="p-5 bg-cdek-green/20 rounded-2xl text-cdek-green group-hover:scale-110 transition-transform">
+                                <i data-lucide="banknote" class="w-8 h-8 md:w-10 md:h-10"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl md:text-4xl font-bold mb-4 text-left">Доход без потолка</h3>
+                        <p class="text-gray-400 text-base md:text-lg max-w-md leading-relaxed text-left">Комиссия 10% с каждой сделки. Без ограничений по сумме выплаты и «без потолка». Ваш финансовый результат зависит только от вас и объёма привлеченных B2B-клиентов.</p>
+                    </div>
+                </div>
+
+                <!-- 02 Взлетная полоса -->
+                <div class="group scroll-reveal delay-200 tilt-card">
+                    <div class="glass-card rounded-[2.5rem] p-8 h-full relative overflow-hidden transition-all duration-500 hover:border-cdek-orange/40">
+                        <span class="text-5xl font-bold opacity-10 block mb-12">02</span>
+                        <div class="p-5 bg-cdek-orange/20 rounded-2xl text-cdek-orange mb-8 w-fit group-hover:rotate-12 transition-transform">
+                            <i data-lucide="plane-takeoff" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 text-left">Взлетная полоса</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed text-left">Пошаговая программа входа в должность в течение 2-х недель. Постоянная поддержка наставника и CRM-сопровождение.</p>
+                    </div>
+                </div>
+
+                <!-- 03 Карьерный рост -->
+                <div class="group scroll-reveal delay-300 tilt-card">
+                    <div class="glass-card rounded-[2.5rem] p-8 h-full relative overflow-hidden transition-all duration-500 hover:border-cdek-purple/40">
+                        <span class="text-5xl font-bold opacity-10 block mb-12">03</span>
+                        <div class="p-5 bg-cdek-purple/20 rounded-2xl text-cdek-purple mb-8 w-fit group-hover:scale-110 transition-transform">
+                            <i data-lucide="trending-up" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-3 text-left">Карьерный рост</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed text-left">Понятный путь развития до руководителя подразделения. Мы ценим инициативу и растим лидеров внутри команды.</p>
+                    </div>
+                </div>
+
+                <!-- 04 Ментальное здоровье -->
+                <div class="md:col-span-2 group scroll-reveal delay-400 tilt-card text-left">
+                    <div class="bg-gradient-to-br from-cdek-green/20 to-cdek-purple/30 border border-white/10 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-10 h-full relative overflow-hidden text-left">
+                        <div class="flex flex-col lg:flex-row gap-8 items-center text-left">
+                            <div class="shrink-0 text-left">
+                                <div class="w-24 h-24 md:w-32 md:h-32 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-3xl animate-blob">
+                                    <i data-lucide="heart" class="w-12 h-12 md:w-16 md:h-16 text-white"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-2xl md:text-3xl font-bold mb-4 text-left">Ментальное здоровье</h3>
+                                <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6 text-left">Индивидуальные сессии с корпоративным коучем ICF для сохранения продуктивности и предотвращения выгорания.</p>
+                                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-xs font-bold uppercase tracking-wider text-left">
+                                    <span class="w-2 h-2 bg-cdek-green rounded-full animate-ping"></span>
+                                    Забота о каждом
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: НАША ХАРТИЯ (Новый стиль - белый фон) -->
+    <section class="py-20 px-4 md:px-8 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
+            <div class="lg:w-1/3 text-left scroll-reveal">
+                <div class="inline-block px-4 py-2 rounded-xl bg-cdek-green/10 text-cdek-green font-bold text-xs mb-6 uppercase tracking-widest">
+                    Наши ценности
+                </div>
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-cdek-green">Хартия</h2>
+                <p class="text-gray-500 text-lg leading-relaxed">
+                    Хартия — свод наших корпоративных принципов и правил игры. Наш внутренний компас и фильтр, который помогает находить «своих» людей и строить сильную команду.
+                </p>
+            </div>
+            <div class="lg:w-2/3 grid sm:grid-cols-2 gap-6 w-full">
+                <!-- Значение 1 -->
+                <div class="scroll-reveal delay-100 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                    <h4 class="text-cdek-green font-bold text-xl mb-3">Честность</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Открытость в доходах и отношениях. Мы говорим правду, даже если она неудобная.</p>
+                </div>
+                <!-- Значение 2 -->
+                <div class="scroll-reveal delay-200 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                    <h4 class="text-cdek-orange font-bold text-xl mb-3">Ответственность</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Каждый в команде отвечает за свой результат и держит слово перед партнерами.</p>
+                </div>
+                <!-- Значение 3 -->
+                <div class="scroll-reveal delay-300 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                    <h4 class="text-cdek-purple font-bold text-xl mb-3">Поддержка</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Помощь коллегам в сложных задачах — это норма. Мы растем только вместе.</p>
+                </div>
+                <!-- Значение 4 -->
+                <div class="scroll-reveal delay-400 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                    <h4 class="text-cdek-black font-bold text-xl mb-3">Уважение</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Отношение к партнерам, клиентам и коллегам на равных, вне зависимости от должностей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Комфорт (Новый дизайн - списком) -->
+    <section class="py-16 md:py-24 px-4 md:px-8 bg-gray-50 overflow-hidden text-left">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-start text-left">
+            
+            <div class="lg:w-1/3 lg:sticky lg:top-32 scroll-reveal text-left">
+                <div class="inline-block px-4 py-2 rounded-xl bg-cdek-orange/10 text-cdek-orange font-bold text-xs mb-6 uppercase tracking-widest">
+                    Бонусы & Быт
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-cdek-black leading-[1.1] mb-6 md:mb-8 uppercase tracking-tighter text-left">
+                    Ваш день в <br> <span class="text-cdek-orange text-left">СДЭК ЮГ</span>
+                </h2>
+                <p class="text-base md:text-xl text-gray-500 font-medium leading-relaxed mb-10 text-left">
+                    Наш офис — это место силы, куда хочется приходить и работать в удовольствие!
+                </p>
+                <div class="hidden lg:flex gap-6">
+                    <div class="text-left">
+                        <p class="text-2xl font-bold text-cdek-black">100%</p>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Техника MSI/Apple</p>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-2xl font-bold text-cdek-black">∞</p>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Свежий кофе</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Список-таймлайн плюшек -->
+            <div class="lg:w-2/3 flex flex-col w-full">
+                <!-- Обеды -->
+                <div class="group scroll-reveal py-8 border-b border-gray-200 flex flex-col sm:flex-row gap-6 sm:items-center hover:bg-white transition-colors rounded-3xl sm:-mx-6 sm:px-6 cursor-default">
+                    <div class="w-16 h-16 rounded-full bg-cdek-orange/10 text-cdek-orange flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <i data-lucide="coffee" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="text-xl md:text-2xl font-bold text-cdek-black mb-2 flex items-center gap-3">
+                            Бесплатные обеды
+                            <span class="text-[10px] bg-cdek-green/10 text-cdek-green px-2 py-1 rounded-full font-bold uppercase tracking-widest hidden sm:inline-block">Вкусно</span>
+                        </h4>
+                        <p class="text-gray-500 text-sm md:text-base leading-relaxed">Заботимся о качественном питании команды каждый день. Полноценные обеды за счет компании.</p>
+                    </div>
+                </div>
+
+                <!-- Зоны отдыха -->
+                <div class="group scroll-reveal py-8 border-b border-gray-200 flex flex-col sm:flex-row gap-6 sm:items-center hover:bg-white transition-colors rounded-3xl sm:-mx-6 sm:px-6 cursor-default">
+                    <div class="w-16 h-16 rounded-full bg-cdek-purple/10 text-cdek-purple flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <i data-lucide="gamepad-2" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="text-xl md:text-2xl font-bold text-cdek-black mb-2 flex items-center gap-3">
+                            Зоны отдыха
+                            <span class="text-[10px] bg-cdek-purple/10 text-cdek-purple px-2 py-1 rounded-full font-bold uppercase tracking-widest hidden sm:inline-block">Relax</span>
+                        </h4>
+                        <p class="text-gray-500 text-sm md:text-base leading-relaxed">Пространство с PlayStation и диванами для короткой перезагрузки в течение дня.</p>
+                    </div>
+                </div>
+
+                <!-- Офисная среда -->
+                <div class="group scroll-reveal py-8 border-b border-gray-200 flex flex-col sm:flex-row gap-6 sm:items-center hover:bg-white transition-colors rounded-3xl sm:-mx-6 sm:px-6 cursor-default">
+                    <div class="w-16 h-16 rounded-full bg-cdek-green/10 text-cdek-green flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <i data-lucide="monitor" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="text-xl md:text-2xl font-bold text-cdek-black mb-2 flex items-center gap-3">
+                            Офисная среда
+                        </h4>
+                        <p class="text-gray-500 text-sm md:text-base leading-relaxed">Современные рабочие места, свежие фрукты, кофе без ограничений и отсутствие дресс-кода.</p>
+                    </div>
+                </div>
+
+                <!-- Книжный клуб -->
+                <div class="group scroll-reveal py-8 flex flex-col sm:flex-row gap-6 sm:items-center hover:bg-white transition-colors rounded-3xl sm:-mx-6 sm:px-6 cursor-default border-b border-transparent">
+                    <div class="w-16 h-16 rounded-full bg-cdek-black/10 text-cdek-black flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <i data-lucide="book-open" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="text-xl md:text-2xl font-bold text-cdek-black mb-2 flex items-center gap-3">
+                            Книжный клуб
+                            <span class="text-[10px] bg-cdek-orange/10 text-cdek-orange px-2 py-1 rounded-full font-bold uppercase tracking-widest hidden sm:inline-block">Рост</span>
+                        </h4>
+                        <p class="text-gray-500 text-sm md:text-base leading-relaxed">Библиотека деловой литературы и регулярные обсуждения с коллегами для обмена опытом.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Актуальные вакансии (ТЕПЕРЬ ТЕМНЫЙ БЛОК) -->
+    <section id="vacancies" class="py-16 md:py-24 px-4 md:px-8 bg-cdek-dark text-white relative overflow-hidden text-left">
+        <!-- Декоративные свечения для глубины -->
+        <div class="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-cdek-green/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-cdek-purple/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10 text-left">
+            <h2 class="scroll-reveal text-3xl md:text-6xl font-bold text-white mb-12 md:mb-20 text-center text-left">Актуальные вакансии</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
+                <!-- Вакансия 1 -->
+                <div class="scroll-reveal delay-100 bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl shadow-black/50 flex flex-col h-full hover:translate-y-[-10px] transition-all duration-300 group relative overflow-hidden text-left">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-cdek-green/5 rounded-full translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="mb-6 inline-flex items-center gap-2 text-cdek-green font-bold uppercase text-[10px] md:text-sm tracking-widest text-left">
+                        <i data-lucide="target" class="w-4 h-4"></i>
+                        <span>B2B Продажи</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-cdek-black mb-6 text-left">Менеджер (Хантер)</h3>
+                    <div class="text-gray-500 space-y-4 mb-10 flex-grow font-medium text-sm md:text-base leading-relaxed text-left">
+                        <p>Нам нужен не «звонилка», а эксперт в переговорах. Ваша цель — крупные контракты и выстраивание долгосрочного партнерства с бизнесом.</p>
+                        <p><strong>Ваш подход:</strong> Мы ушли от скриптов. Вы строите диалог на основе реальных цифр и потребностей клиента. Доход — оклад + честные 10% со сделок.</p>
+                    </div>
+                    <a href="#cta" class="magnetic-btn inline-flex items-center justify-center bg-cdek-black text-white px-8 py-4 md:py-5 rounded-2xl font-bold hover:bg-cdek-orange transition-colors">
+                        Принять вызов
+                    </a>
+                </div>
+
+                <!-- Вакансия 2 -->
+                <div class="scroll-reveal delay-200 bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl shadow-black/50 flex flex-col h-full hover:translate-y-[-10px] transition-all duration-300 group relative overflow-hidden text-left">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-cdek-purple/5 rounded-full translate-x-1/2 -translate-y-1/2 text-left"></div>
+                    <div class="mb-6 inline-flex items-center gap-2 text-cdek-purple font-bold uppercase text-[10px] md:text-sm tracking-widest text-left">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                        <span>Management</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-cdek-black mb-6 text-left">РОП (г. Воронеж)</h3>
+                    <div class="text-gray-500 space-y-4 mb-10 flex-grow font-medium text-sm md:text-base leading-relaxed text-left text-balance">
+                        <p>Лидерская роль для тех, кто умеет вдохновлять и строить системы. Вы возглавите отдел в одном из наших флагманских регионов.</p>
+                        <p><strong>Задачи:</strong> Формирование команды «звезд», масштабирование продаж и внедрение лучших практик управления филиалом.</p>
+                    </div>
+                    <a href="#cta" class="magnetic-btn inline-flex items-center justify-center bg-cdek-black text-white px-8 py-4 md:py-5 rounded-2xl font-bold hover:bg-cdek-purple transition-colors">
+                        Возглавить команду
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="py-16 md:py-24 px-4 md:px-8 bg-cdek-green relative overflow-hidden text-white text-center">
+        <div class="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-white/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 animate-blob"></div>
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            <h2 class="text-3xl md:text-7xl font-bold mb-6 leading-tight text-center text-white">Готовы к <br> новым высотам?</h2>
+            <p class="text-base md:text-2xl font-medium mb-12 opacity-90 text-center">Заполните анкету ниже, и мы свяжемся с вами в течение следующего рабочего дня.</p>
+            
+            <div class="bg-white p-2 md:p-6 rounded-[2.5rem] shadow-3xl max-w-2xl mx-auto relative z-20 overflow-hidden">
+                <div class="ya-form-container">
+                    <script src="https://forms.yandex.ru/_static/embed.js"></script>
+                    <iframe src="https://forms.yandex.ru/u/69be9b0f6d2d739916082208?iframe=1" name="ya-form-69be9b0f6d2d739916082208"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: СЛЕДИТЕ ЗА НАМИ (ВК И СЕТКА) -->
+    <section class="py-16 px-4 md:px-8 bg-gray-50 overflow-hidden">
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 scroll-reveal text-left">
+            <a href="#" class="flex items-center gap-5 p-6 bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all group">
+                <div class="w-14 h-14 bg-[#0077FF]/10 rounded-2xl flex items-center justify-center text-[#0077FF] group-hover:scale-110 transition-transform">
+                    <i data-lucide="users" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg text-cdek-black">ВКонтакте</h4>
+                    <p class="text-xs text-gray-400">Статьи о карьере и новости команды</p>
+                </div>
+            </a>
+            <a href="#" class="flex items-center gap-5 p-6 bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all group">
+                <div class="w-14 h-14 bg-cdek-green/10 rounded-2xl flex items-center justify-center text-cdek-green group-hover:scale-110 transition-transform">
+                    <i data-lucide="layout-grid" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg text-cdek-black">Сетка (HH)</h4>
+                    <p class="text-xs text-gray-400">Блог HR-директора Ольги Морозовой</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="bg-cdek-black py-16 md:py-20 px-4 md:px-8 text-white text-left">
+        <div class="max-w-7xl mx-auto text-left">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 text-left">
+                <div class="text-left">
+                    <img src="https://www.cdek.ru/v2/img/logo.f195d73.svg" alt="СДЭК" class="h-8 md:h-10 mb-8 filter brightness-0 invert text-left" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/d/d7/Cdek_logo.svg'">
+                    <p class="text-gray-400 font-medium leading-relaxed max-w-md text-left">
+                        ООО «СДЭК-ЮГ» под управлением Елены Чернявской. <br>
+                        Лидеры логистики Юга России. Команда, где ценят честность, ответственность и взаимное уважение.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-left">
+                    <div class="flex flex-col gap-4 text-left">
+                        <span class="font-bold text-xs uppercase tracking-widest text-gray-500 text-left">Контакты</span>
+                        <a href="tel:+79094545640" class="text-lg font-bold hover:text-cdek-green transition-colors text-left">+7 (909) 454-56-40</a>
+                        <a href="mailto:ea.chernyavskaya@cdek.ru" class="text-lg font-bold hover:text-cdek-orange transition-colors text-balance text-left">ea.chernyavskaya@cdek.ru</a>
+                    </div>
+                    <div class="flex flex-col gap-4 text-left">
+                        <span class="font-bold text-xs uppercase tracking-widest text-gray-500 text-left">Офисы</span>
+                        <div class="text-gray-400 font-semibold space-y-2 text-sm text-left">
+                            <p class="flex items-start gap-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 shrink-0 mt-1 text-cdek-orange"></i>
+                                <span>Краснодар: Стасова, 184, 2 этаж</span>
+                            </p>
+                            <p class="flex items-start gap-2">
+                                <i data-lucide="map-pin" class="w-4 h-4 shrink-0 mt-1 text-cdek-purple"></i>
+                                <span>Воронеж: Фридриха Энгельса, 25Б</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-10 border-t border-white/10 text-[10px] md:text-xs text-gray-500 font-medium leading-relaxed text-left">
+                <div class="grid md:grid-cols-2 gap-6 text-left">
+                    <div class="space-y-1 text-left">
+                        <p class="text-gray-400 font-bold uppercase mb-2 text-left">Юридическая информация:</p>
+                        <p class="text-left uppercase">ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «СДЭК-ЮГ»</p>
+                        <p class="text-left">Адрес: 350075, Краснодарский край, г. Краснодар, ул. Им. Стасова, д. 184, офис 2</p>
+                        <p class="text-left">ИНН: 2312308891 | ОГРН: 1222300016465</p>
+                    </div>
+                    <div class="md:text-right flex flex-col md:items-end justify-end text-left md:text-right">
+                        <p class="text-left md:text-right">&copy; 2026 ООО «СДЭК-ЮГ». Все права защищены.</p>
+                        <div class="flex gap-4 mt-2 justify-start md:justify-end text-left md:text-right">
+                            <a href="#" class="underline text-left md:text-right">Политика конфиденциальности</a>
+                            <a href="#" class="underline text-left md:text-right text-balance leading-none">Согласие ПД</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const jsConfetti = new JSConfetti();
+        function triggerConfetti() {
+            jsConfetti.addConfetti({ emojis: ['⚡', '📦', '🔥', '🚀'], emojiSize: 50, confettiNumber: 30 });
+            setTimeout(() => { 
+                const ctaSection = document.querySelector('#cta');
+                if (ctaSection) ctaSection.scrollIntoView({ behavior: 'smooth' }); 
+            }, 500);
+        }
+
+        const runCounter = (el) => {
+            const target = +el.getAttribute('data-target');
+            if (isNaN(target)) return;
+            const duration = 2500;
+            const startTime = performance.now();
+            const update = (now) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                el.innerText = Math.floor(easeOut * target);
+                if (progress < 1) requestAnimationFrame(update);
+                else el.innerText = target;
+            };
+            requestAnimationFrame(update);
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.querySelectorAll('.counter').forEach(runCounter);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-reveal, #stats-section').forEach(el => observer.observe(el));
+
+        // Включение эффектов только для десктопа
+        const isDesktop = window.matchMedia("(pointer: fine)").matches;
+        
+        if (isDesktop) {
+            // Магнитные кнопки
+            const magneticButtons = document.querySelectorAll('.magnetic-btn');
+            magneticButtons.forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+                    btn.style.transition = 'none';
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+                    btn.style.transform = `translate(0px, 0px) scale(1)`;
+                });
+            });
+
+            // 3D Tilt эффект для карточек
+            const tiltCards = document.querySelectorAll('.tilt-card');
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -5;
+                    const rotateY = ((x - centerX) / centerX) * 5;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    card.style.transition = 'none';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                    card.style.transition = 'transform 0.5s ease';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
