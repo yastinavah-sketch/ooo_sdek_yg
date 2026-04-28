@@ -339,10 +339,12 @@
         </div>
     </section>
 
-    <!-- БЛОК: НАША ХАРТИЯ -->
+  <!-- БЛОК: НАША ХАРТИЯ -->
     <section class="py-20 px-4 md:px-8 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
-            <div class="lg:w-1/3 text-left scroll-reveal">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-start">
+            
+            <!-- Левая часть с заголовком (сделали sticky, чтобы она оставалась на экране при скролле длинного списка) -->
+            <div class="lg:w-1/3 text-left scroll-reveal sticky top-8">
                 <div class="inline-block px-4 py-2 rounded-xl bg-cdek-green/10 text-cdek-green font-bold text-xs mb-6 uppercase tracking-widest">
                     Наши ценности
                 </div>
@@ -351,23 +353,64 @@
                     Хартия — свод наших корпоративных принципов и правил игры. Наш внутренний компас и фильтр, который помогает находить «своих» людей и строить сильную команду.
                 </p>
             </div>
+
+            <!-- Правая часть с карточками ценностей (9 штук) -->
             <div class="lg:w-2/3 grid sm:grid-cols-2 gap-6 w-full">
+                
+                <!-- #1 Честность -->
                 <div class="scroll-reveal delay-100 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
-                    <h4 class="text-cdek-green font-bold text-xl mb-3">Честность</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Открытость в доходах и отношениях. Мы говорим правду, даже если она неудобная.</p>
+                    <h4 class="text-cdek-green font-bold text-xl mb-3">#1 Честность</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Это основа доверительных отношений. Мы правдивы с собой и окружающими.</p>
                 </div>
+                
+                <!-- #2 Открытость -->
                 <div class="scroll-reveal delay-200 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
-                    <h4 class="text-cdek-orange font-bold text-xl mb-3">Ответственность</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Каждый в команде отвечает за свой результат и держит слово перед партнерами.</p>
+                    <h4 class="text-cdek-orange font-bold text-xl mb-3">#2 Открытость</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Мы думаем, говорим и делаем как чувствуем, доступны для общения. Мы делимся опытом и готовы давать и принимать обратную связь.</p>
                 </div>
+                
+                <!-- #3 Ответственность -->
                 <div class="scroll-reveal delay-300 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
-                    <h4 class="text-cdek-purple font-bold text-xl mb-3">Поддержка</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Помощь коллегам в сложных задачах — это норма. Мы растем только вместе.</p>
+                    <h4 class="text-cdek-purple font-bold text-xl mb-3">#3 Ответственность</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Мы принимаем последствия за слова, решения, действия и результат. Уважительно относимся к чужому времени, соблюдаем договоренности. Держим слово и умеем признавать свои ошибки.</p>
                 </div>
+                
+                <!-- #4 Поддержка -->
                 <div class="scroll-reveal delay-400 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
-                    <h4 class="text-cdek-black font-bold text-xl mb-3">Уважение</h4>
-                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Отношение к партнерам, клиентам и коллегам на равных, вне зависимости от должностей.</p>
+                    <h4 class="text-cdek-black font-bold text-xl mb-3">#4 Поддержка</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Умение подать руку помощи. Искренне проявлять внимание и заботу в радостях и в трудностях.</p>
                 </div>
+
+                <!-- #5 Уважение -->
+                <div class="scroll-reveal delay-100 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                    <h4 class="text-cdek-green font-bold text-xl mb-3">#5 Уважение</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Мы разные, но мы равные. Остаемся объективными в оценке действий или событий. Используем стратегию "win-win", с уважением к себе и окружающим. Равны перед правилами.</p>
+                </div>
+
+                <!-- #6 Энергия -->
+                <div class="scroll-reveal delay-200 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                    <h4 class="text-cdek-orange font-bold text-xl mb-3">#6 Энергия</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Мы наполнены драйвом и импульсом, которые вдохновляют и двигают нас к свершениям.</p>
+                </div>
+
+                <!-- #7 Гибкость -->
+                <div class="scroll-reveal delay-300 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                    <h4 class="text-cdek-purple font-bold text-xl mb-3">#7 Гибкость</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Способны адаптироваться к переменам и находить нестандартные и креативные пути решения без потери продуктивности, сохраняя гармонию внутри.</p>
+                </div>
+
+                <!-- #8 Инициативность -->
+                <div class="scroll-reveal delay-400 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                    <h4 class="text-cdek-black font-bold text-xl mb-3">#8 Инициативность</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Мы смелые в своих проявлениях и реализовываем их. Инициативность – это когда мы перестаём быть безучастными.</p>
+                </div>
+
+                <!-- #9 Саморазвитие (растянута на две колонки для баланса сетки) -->
+                <div class="sm:col-span-2 scroll-reveal delay-500 bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:shadow-xl transition-all duration-500 group">
+                    <h4 class="text-cdek-green font-bold text-xl mb-3">#9 Саморазвитие</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed group-hover:text-cdek-black transition-colors">Мы осознаем свой потенциал, непрерывно стремимся к новым знаниям и росту, как духовно, так и физически.</p>
+                </div>
+
             </div>
         </div>
     </section>
