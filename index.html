@@ -344,7 +344,7 @@
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-start">
             
             <!-- Левая часть с заголовком -->
-            <div class="lg:w-1/3 text-left scroll-reveal sticky top-8 z-10 bg-white/80 backdrop-blur-md py-4 lg:py-0">
+            <div class="lg:w-1/3 text-left sticky top-8 z-10 bg-white/90 backdrop-blur-md py-4 lg:py-0">
                 <div class="inline-block px-4 py-2 rounded-xl bg-cdek-green/10 text-cdek-green font-bold text-xs mb-6 uppercase tracking-widest">
                     Наши ценности
                 </div>
@@ -355,7 +355,7 @@
             </div>
 
             <!-- Правая часть со слайдером (9 штук) -->
-            <div class="lg:w-2/3 w-full flex flex-col overflow-hidden">
+            <div class="lg:w-2/3 w-full flex flex-col">
                 
                 <!-- Навигация слайдера и счетчик -->
                 <div class="flex justify-between items-center mb-6 px-2">
@@ -363,87 +363,88 @@
                         <span id="charter-current" class="text-cdek-green font-bold text-3xl">1</span> из 9
                     </div>
                     <div class="flex gap-3">
-                        <button id="charter-prev" class="p-3 rounded-full bg-gray-100 text-gray-500 hover:bg-cdek-green hover:text-white transition-all duration-300 disabled:opacity-30 disabled:hover:bg-gray-100 disabled:hover:text-gray-500 cursor-pointer disabled:cursor-not-allowed" aria-label="Предыдущий слайд">
+                        <button id="charter-prev" disabled class="p-3 rounded-full bg-gray-100 text-gray-500 hover:bg-cdek-green hover:text-white transition-all duration-300 disabled:opacity-30 disabled:hover:bg-gray-100 disabled:hover:text-gray-500 cursor-pointer disabled:cursor-not-allowed shadow-sm" aria-label="Предыдущий слайд">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                         </button>
-                        <button id="charter-next" class="p-3 rounded-full bg-gray-100 text-gray-500 hover:bg-cdek-green hover:text-white transition-all duration-300 disabled:opacity-30 disabled:hover:bg-gray-100 disabled:hover:text-gray-500 cursor-pointer disabled:cursor-not-allowed" aria-label="Следующий слайд">
+                        <button id="charter-next" class="p-3 rounded-full bg-gray-100 text-gray-500 hover:bg-cdek-green hover:text-white transition-all duration-300 disabled:opacity-30 disabled:hover:bg-gray-100 disabled:hover:text-gray-500 cursor-pointer disabled:cursor-not-allowed shadow-sm" aria-label="Следующий слайд">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                         </button>
                     </div>
                 </div>
 
-                <!-- Контейнер слайдов -->
-                <div class="overflow-hidden w-full relative">
-                    <div id="charter-track" class="flex transition-transform duration-500 ease-out w-full cursor-grab active:cursor-grabbing">
+                <!-- Контейнер слайдов (нативный scroll-snap) -->
+                <div class="relative w-full rounded-[2.5rem] overflow-hidden shadow-xl">
+                    <!-- Скрываем стандартный скроллбар браузера для красоты -->
+                    <div id="charter-slider" class="flex overflow-x-auto snap-x snap-mandatory w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] scroll-smooth">
                         
-                        <!-- #1 Честность -->
-                        <div class="min-w-full shrink-0 px-2">
-                            <div class="h-full min-h-[320px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 text-white">
-                                <h4 class="font-bold text-3xl mb-4">#1 Честность</h4>
+                        <!-- #1 Честность (Зеленый) -->
+                        <div class="w-full shrink-0 snap-center flex-none">
+                            <div class="h-full min-h-[350px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 text-white">
+                                <h4 class="font-bold text-3xl md:text-4xl mb-4">#1 Честность</h4>
                                 <p class="text-white/90 text-lg md:text-xl leading-relaxed">Это основа доверительных отношений. Мы правдивы с собой и окружающими.</p>
                             </div>
                         </div>
                         
-                        <!-- #2 Открытость -->
-                        <div class="min-w-full shrink-0 px-2">
-                            <div class="h-full min-h-[320px] flex flex-col justify-center bg-slate-900 p-8 md:p-12 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 text-white">
-                                <h4 class="font-bold text-3xl mb-4">#2 Открытость</h4>
+                        <!-- #2 Открытость (Темный) -->
+                        <div class="w-full shrink-0 snap-center flex-none">
+                            <div class="h-full min-h-[350px] flex flex-col justify-center bg-slate-900 p-8 md:p-12 text-white">
+                                <h4 class="font-bold text-3xl md:text-4xl mb-4">#2 Открытость</h4>
                                 <p class="text-white/90 text-lg md:text-xl leading-relaxed">Мы думаем, говорим и делаем как чувствуем, доступны для общения. Мы делимся опытом и готовы давать и принимать обратную связь.</p>
                             </div>
                         </div>
                         
-                        <!-- #3 Ответственность -->
-                        <div class="min-w-full shrink-0 px-2">
-                            <div class="h-full min-h-[320px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 text-white">
-                                <h4 class="font-bold text-3xl mb-4">#3 Ответственность</h4>
+                        <!-- #3 Ответственность (Зеленый) -->
+                        <div class="w-full shrink-0 snap-center flex-none">
+                            <div class="h-full min-h-[350px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 text-white">
+                                <h4 class="font-bold text-3xl md:text-4xl mb-4">#3 Ответственность</h4>
                                 <p class="text-white/90 text-lg md:text-xl leading-relaxed">Мы принимаем последствия за слова, решения, действия и результат. Уважительно относимся к чужому времени, соблюдаем договоренности. Держим слово и умеем признавать свои ошибки.</p>
                             </div>
                         </div>
                         
-                        <!-- #4 Поддержка -->
-                        <div class="min-w-full shrink-0 px-2">
-                            <div class="h-full min-h-[320px] flex flex-col justify-center bg-slate-900 p-8 md:p-12 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 text-white">
-                                <h4 class="font-bold text-3xl mb-4">#4 Поддержка</h4>
+                        <!-- #4 Поддержка (Темный) -->
+                        <div class="w-full shrink-0 snap-center flex-none">
+                            <div class="h-full min-h-[350px] flex flex-col justify-center bg-slate-900 p-8 md:p-12 text-white">
+                                <h4 class="font-bold text-3xl md:text-4xl mb-4">#4 Поддержка</h4>
                                 <p class="text-white/90 text-lg md:text-xl leading-relaxed">Умение подать руку помощи. Искренне проявлять внимание и заботу в радостях и в трудностях.</p>
                             </div>
                         </div>
 
-                        <!-- #5 Уважение -->
-                        <div class="min-w-full shrink-0 px-2">
-                            <div class="h-full min-h-[320px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 text-white">
-                                <h4 class="font-bold text-3xl mb-4">#5 Уважение</h4>
+                        <!-- #5 Уважение (Зеленый) -->
+                        <div class="w-full shrink-0 snap-center flex-none">
+                            <div class="h-full min-h-[350px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 text-white">
+                                <h4 class="font-bold text-3xl md:text-4xl mb-4">#5 Уважение</h4>
                                 <p class="text-white/90 text-lg md:text-xl leading-relaxed">Мы разные, но мы равные. Остаемся объективными в оценке действий или событий. Используем стратегию "win-win", с уважением к себе и окружающим. Равны перед правилами.</p>
                             </div>
                         </div>
 
-                        <!-- #6 Энергия -->
-                        <div class="min-w-full shrink-0 px-2">
-                            <div class="h-full min-h-[320px] flex flex-col justify-center bg-slate-900 p-8 md:p-12 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 text-white">
-                                <h4 class="font-bold text-3xl mb-4">#6 Энергия</h4>
+                        <!-- #6 Энергия (Темный) -->
+                        <div class="w-full shrink-0 snap-center flex-none">
+                            <div class="h-full min-h-[350px] flex flex-col justify-center bg-slate-900 p-8 md:p-12 text-white">
+                                <h4 class="font-bold text-3xl md:text-4xl mb-4">#6 Энергия</h4>
                                 <p class="text-white/90 text-lg md:text-xl leading-relaxed">Мы наполнены драйвом и импульсом, которые вдохновляют и двигают нас к свершениям.</p>
                             </div>
                         </div>
 
-                        <!-- #7 Гибкость -->
-                        <div class="min-w-full shrink-0 px-2">
-                            <div class="h-full min-h-[320px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 text-white">
-                                <h4 class="font-bold text-3xl mb-4">#7 Гибкость</h4>
+                        <!-- #7 Гибкость (Зеленый) -->
+                        <div class="w-full shrink-0 snap-center flex-none">
+                            <div class="h-full min-h-[350px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 text-white">
+                                <h4 class="font-bold text-3xl md:text-4xl mb-4">#7 Гибкость</h4>
                                 <p class="text-white/90 text-lg md:text-xl leading-relaxed">Способны адаптироваться к переменам и находить нестандартные и креативные пути решения без потери продуктивности, сохраняя гармонию внутри.</p>
                             </div>
                         </div>
 
-                        <!-- #8 Инициативность -->
-                        <div class="min-w-full shrink-0 px-2">
-                            <div class="h-full min-h-[320px] flex flex-col justify-center bg-slate-900 p-8 md:p-12 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 text-white">
-                                <h4 class="font-bold text-3xl mb-4">#8 Инициативность</h4>
+                        <!-- #8 Инициативность (Темный) -->
+                        <div class="w-full shrink-0 snap-center flex-none">
+                            <div class="h-full min-h-[350px] flex flex-col justify-center bg-slate-900 p-8 md:p-12 text-white">
+                                <h4 class="font-bold text-3xl md:text-4xl mb-4">#8 Инициативность</h4>
                                 <p class="text-white/90 text-lg md:text-xl leading-relaxed">Мы смелые в своих проявлениях и реализовываем их. Инициативность – это когда мы перестаём быть безучастными.</p>
                             </div>
                         </div>
 
-                        <!-- #9 Саморазвитие -->
-                        <div class="min-w-full shrink-0 px-2">
-                            <div class="h-full min-h-[320px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 text-white">
-                                <h4 class="font-bold text-3xl mb-4">#9 Саморазвитие</h4>
+                        <!-- #9 Саморазвитие (Зеленый) -->
+                        <div class="w-full shrink-0 snap-center flex-none">
+                            <div class="h-full min-h-[350px] flex flex-col justify-center bg-cdek-green p-8 md:p-12 text-white">
+                                <h4 class="font-bold text-3xl md:text-4xl mb-4">#9 Саморазвитие</h4>
                                 <p class="text-white/90 text-lg md:text-xl leading-relaxed">Мы осознаем свой потенциал, непрерывно стремимся к новым знаниям и росту, как духовно, так и физически.</p>
                             </div>
                         </div>
@@ -453,72 +454,53 @@
             </div>
         </div>
 
-        <!-- Скрипт для работы слайдера и свайпов -->
+        <!-- Надежный скрипт для переключения слайдов (работает по скроллу и клику) -->
         <script>
-            function initCharterSlider() {
-                const track = document.getElementById('charter-track');
+            function initCharterScrollSlider() {
+                const slider = document.getElementById('charter-slider');
                 const prevBtn = document.getElementById('charter-prev');
                 const nextBtn = document.getElementById('charter-next');
                 const currentLabel = document.getElementById('charter-current');
                 
-                if (!track || !prevBtn || !nextBtn || !currentLabel) return;
+                if (!slider || !prevBtn || !nextBtn || !currentLabel) return;
 
-                const slidesCount = track.children.length;
-                let currentIndex = 0;
+                const totalSlides = 9;
 
-                function updateSlider() {
-                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                // Функция обновления счетчика и кнопок при скролле (пальцем или кнопкой)
+                function updateSliderState() {
+                    // Вычисляем текущий индекс на основе того, насколько прокручен контейнер
+                    const slideWidth = slider.clientWidth;
+                    const currentIndex = Math.round(slider.scrollLeft / slideWidth);
+                    
                     currentLabel.textContent = currentIndex + 1;
+                    
+                    // Блокируем кнопки на крайних позициях
                     prevBtn.disabled = currentIndex === 0;
-                    nextBtn.disabled = currentIndex === slidesCount - 1;
+                    nextBtn.disabled = currentIndex === totalSlides - 1;
                 }
 
+                // Слушаем событие скролла (срабатывает при кликах на кнопки и свайпах)
+                slider.addEventListener('scroll', updateSliderState, { passive: true });
+
+                // Обработчики кнопок: прокручивают ровно на ширину одного слайда
                 prevBtn.addEventListener('click', () => {
-                    if (currentIndex > 0) {
-                        currentIndex--;
-                        updateSlider();
-                    }
+                    const slideWidth = slider.clientWidth;
+                    slider.scrollBy({ left: -slideWidth, behavior: 'smooth' });
                 });
 
                 nextBtn.addEventListener('click', () => {
-                    if (currentIndex < slidesCount - 1) {
-                        currentIndex++;
-                        updateSlider();
-                    }
+                    const slideWidth = slider.clientWidth;
+                    slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
                 });
-
-                let touchStartX = 0;
-                let touchEndX = 0;
-
-                track.addEventListener('touchstart', e => {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, {passive: true});
-
-                track.addEventListener('touchend', e => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                }, {passive: true});
-
-                function handleSwipe() {
-                    const swipeThreshold = 50; 
-                    if (touchEndX < touchStartX - swipeThreshold && currentIndex < slidesCount - 1) {
-                        currentIndex++;
-                        updateSlider();
-                    }
-                    if (touchEndX > touchStartX + swipeThreshold && currentIndex > 0) {
-                        currentIndex--;
-                        updateSlider();
-                    }
-                }
-
-                updateSlider();
+                
+                // Пересчитываем при изменении размеров окна
+                window.addEventListener('resize', updateSliderState);
             }
 
-            // Запускаем скрипт сразу, если DOM уже загружен, или ждем загрузки
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initCharterSlider);
+                document.addEventListener('DOMContentLoaded', initCharterScrollSlider);
             } else {
-                initCharterSlider();
+                initCharterScrollSlider();
             }
         </script>
     </section>
@@ -599,39 +581,42 @@
         </div>
     </section>
 
-    <!-- Актуальные вакансии (ТЕМНЫЙ БЛОК) -->
+   <!-- Актуальные вакансии (ТЕМНЫЙ БЛОК) -->
     <section id="vacancies" class="py-16 md:py-24 px-4 md:px-8 bg-cdek-dark text-white relative overflow-hidden text-left">
         <div class="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-cdek-green/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
         <div class="absolute bottom-0 right-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-cdek-purple/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto relative z-10 text-left">
             <h2 class="scroll-reveal text-3xl md:text-6xl font-bold text-white mb-12 md:mb-20 text-center text-left">Актуальные вакансии</h2>
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto text-left">
-                <!-- Вакансия 1 -->
+            
+            <!-- Изменена сетка: добавлено lg:grid-cols-3 и max-w-7xl для размещения 3 карточек -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto text-left">
+                
+                <!-- Вакансия 1: Хантер -->
                 <div class="scroll-reveal delay-100 bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl shadow-black/50 flex flex-col h-full hover:translate-y-[-10px] transition-all duration-300 group relative overflow-hidden text-left">
                     <div class="absolute top-0 right-0 w-48 h-48 bg-cdek-green/5 rounded-full translate-x-1/2 -translate-y-1/2"></div>
                     <div class="mb-6 inline-flex items-center gap-2 text-cdek-green font-bold uppercase text-[10px] md:text-sm tracking-widest text-left">
                         <i data-lucide="target" class="w-4 h-4"></i>
-                        <span>B2B Продажи</span>
+                        <span>B2B/B2C Продажи</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-bold text-cdek-black mb-6 text-left">Удалённый Менеджер (Хантер)</h3>
                     <div class="text-gray-500 space-y-4 mb-10 flex-grow font-medium text-sm md:text-base leading-relaxed text-left">
                         <p>Нам нужен не «звонилка», а эксперт в переговорах. Ваша цель — крупные контракты и выстраивание долгосрочного партнерства с бизнесом.</p>
                         <p><strong>Ваш подход:</strong> Мы ушли от скриптов. Вы строите диалог на основе реальных цифр и потребностей клиента. Доход — оклад + честные 10% со сделок. Формат работы - удалённый.</p>
                     </div>
-                    <a href="#cta" class="magnetic-btn inline-flex items-center justify-center bg-cdek-black text-white px-8 py-4 md:py-5 rounded-2xl font-bold hover:bg-cdek-orange transition-colors">
+                    <a href="#cta" class="magnetic-btn inline-flex items-center justify-center bg-cdek-black text-white px-8 py-4 md:py-5 rounded-2xl font-bold hover:bg-cdek-green transition-colors">
                         Принять вызов
                     </a>
                 </div>
 
-                <!-- Вакансия 2 -->
+                <!-- Вакансия 2: РОП -->
                 <div class="scroll-reveal delay-200 bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl shadow-black/50 flex flex-col h-full hover:translate-y-[-10px] transition-all duration-300 group relative overflow-hidden text-left">
                     <div class="absolute top-0 right-0 w-48 h-48 bg-cdek-purple/5 rounded-full translate-x-1/2 -translate-y-1/2 text-left"></div>
                     <div class="mb-6 inline-flex items-center gap-2 text-cdek-purple font-bold uppercase text-[10px] md:text-sm tracking-widest text-left">
                         <i data-lucide="shield" class="w-4 h-4"></i>
                         <span>Management</span>
                     </div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-cdek-black mb-6 text-left">РОП (г. Воронеж)</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold text-cdek-black mb-6 text-left">РОП (Воронеж и Краснодар)</h3>
                     <div class="text-gray-500 space-y-4 mb-10 flex-grow font-medium text-sm md:text-base leading-relaxed text-left text-balance">
                         <p>Лидерская роль для тех, кто умеет вдохновлять и строить системы. Вы возглавите отдел в одном из наших флагманских регионов.</p>
                         <p><strong>Задачи:</strong> Формирование команды «звезд», масштабирование продаж и внедрение лучших практик управления филиалом.</p>
@@ -640,6 +625,24 @@
                         Возглавить команду
                     </a>
                 </div>
+
+                <!-- Вакансия 3: Менеджер по развитию бизнеса (НОВАЯ) -->
+                <div class="scroll-reveal delay-300 bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl shadow-black/50 flex flex-col h-full hover:translate-y-[-10px] transition-all duration-300 group relative overflow-hidden text-left">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-cdek-orange/5 rounded-full translate-x-1/2 -translate-y-1/2 text-left"></div>
+                    <div class="mb-6 inline-flex items-center gap-2 text-cdek-orange font-bold uppercase text-[10px] md:text-sm tracking-widest text-left">
+                        <i data-lucide="users" class="w-4 h-4"></i>
+                        <span>B2C & B2B Сегмент</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-cdek-black mb-6 text-left">Менеджер по развитию бизнеса</h3>
+                    <div class="text-gray-500 space-y-4 mb-10 flex-grow font-medium text-sm md:text-base leading-relaxed text-left text-balance">
+                        <p>Мы доверим вам ценное — развитие клиентов. Ищем амбициозного эксперта, который верит, что win-win — лучшая стратегия переговоров.</p>
+                        <p><strong>Задачи:</strong> Глубокий анализ базы, upsell доп. услуг, поддержание лояльности и «разогрев» спящих клиентов.</p>
+                    </div>
+                    <a href="#cta" class="magnetic-btn inline-flex items-center justify-center bg-cdek-black text-white px-8 py-4 md:py-5 rounded-2xl font-bold hover:bg-cdek-orange transition-colors">
+                        Развивать бизнес
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>
